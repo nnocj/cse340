@@ -11,10 +11,9 @@ app.set("layout", "./layouts/layout");
 
 // Routes
 app.use(static);
-app.get("/", (req, res) => {
-  res.send("Welcome to my app!");
+app.get('/', (req, res) => {
+  res.render('index', { title: 'Home Page' });
 });
-
 // Ensure PORT is set, or use 3000 as default
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "localhost";
