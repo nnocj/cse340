@@ -1,41 +1,25 @@
-/* ******************************************
- * This server.js file is the primary file of the 
- * application. It is used to control the project.
- *******************************************/
-/* ***********************
- * Require Statements
- *************************/
-const express = require("express")
-const env = require("dotenv").config()
-const app = express()
+const express = require("express");
+const env = require("dotenv").config();
+const app = express();
 const static = require("./routes/static");
 const expressEjsLayouts = require("express-ejs-layouts");
 
-/* ***********************
- * view engines and templates
- *************************/
+// Set up view engine
 app.set("view engine", "ejs");
-app.use(expressEjsLayouts)
+app.use(expressEjsLayouts);
 app.set("layout", "./layouts/layout");
-/* ***********************
- * Routes
- *************************/
-app.use(static)
+
+// Routes
+app.use(static);
 app.get("/", (req, res) => {
-  res.render("index", {title: "home"})
-  
-})
+  res.send("Welcome to my app!");
+});
 
-/* ***********************
- * Local Server Information
- * Values from .env (environment) file
- *************************/
-const port = process.env.PORT
-const host = process.env.HOST
+// Ensure PORT is set, or use 3000 as default
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || "localhost";
 
-/* ***********************
- * Log statement to confirm server operation
- *************************/
+// Start server
 app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`)
-})
+  console.log(`App listening on ${host}:${port}`);
+});
