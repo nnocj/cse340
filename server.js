@@ -12,7 +12,7 @@ app.set("layout", "./layouts/layout");
 // Routes
 app.use(static);
 app.get("/", (req, res) => {
-  res.send("Welcome to my app!");
+  res.send("Welcome to my app okay!");
 });
 
 // Ensure PORT is set, or use 3000 as default
