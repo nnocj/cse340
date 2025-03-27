@@ -246,3 +246,6 @@ WHERE inv_model = 'Hummer' AND inv_description LIKE '%small interiors%';
 UPDATE public.inventory 
 SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
     inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');
+
+
+SELECT * FROM public.inventory;
