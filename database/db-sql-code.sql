@@ -236,6 +236,12 @@ VALUES   (
 ALTER TABLE public.inventory 
 ALTER COLUMN inv_year TYPE CHARACTER VARYING(4);
 
+--Description Update
+UPDATE "inventory"
+SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
+WHERE inv_model = 'Hummer' AND inv_description LIKE '%small interiors%';
+
+
 -- Now update image and thumbnail paths
 UPDATE public.inventory 
 SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
