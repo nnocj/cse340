@@ -44,7 +44,7 @@ nav ul{
   padding: 1.5rem;
 }
 
-ul a {
+#nav-div a {
   display:flex;
   justify-content: center;
   color: white;
