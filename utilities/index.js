@@ -7,14 +7,12 @@ Util.getNav = async function(req, res, next){
     let data = await invModel.getClassifications()
     let list = "<ul>"
     list += '<li><a href="/" title="Homepage">Home</a></li>'
-    data.rows.foreach((row) =>{
-        if (data.rows && data.rows.length > 0) {
-            data.rows.forEach((row) => {
-                list += `<li><a href="/inv/type/${row.classification_id}" title="See our inventory of ${row.classification_name} vehicles">${row.classification_name}</a></li>`;
-            });
-        }
-        
-    })
+    
+    if (data.rows && data.rows.length > 0) {
+        data.rows.forEach((row) => {
+            list += `<li><a href="/inv/type/${row.classification_id}" title="See our inventory of ${row.classification_name} vehicles">${row.classification_name}</a></li>`;
+        });
+    }
 
     list += "</ul>"
     return list;
