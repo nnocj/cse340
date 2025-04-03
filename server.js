@@ -3,6 +3,7 @@ const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
 const expressEjsLayouts = require("express-ejs-layouts");
+const baseController =  require("./controllers/baseController")
 
 // Set up view engine
 app.set("view engine", "ejs");
@@ -11,9 +12,11 @@ app.set("layout", "./layouts/layout");
 
 // Routes
 app.use(static);
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.render('index', { title: 'Home Page' });
-});
+});*/
+app.get("/", baseController.buildHome);
+
 // Ensure PORT is set, or use 3000 as default
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || "localhost";
