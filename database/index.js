@@ -1,4 +1,4 @@
-const {pool} = require("pg");
+const {Pool} = require("pg");
 require("dotenv").config();
 /* ***************
  * Connection Pool to help with multiple requests or connections to the database.
@@ -35,5 +35,5 @@ else {
         pool = new Pool ({
             connectionString: process.env.DATABASE_URL,
         })
-        modules.exports = Pool
+        module.exports = Pool
 }

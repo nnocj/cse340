@@ -15,4 +15,4 @@ Util.getNav = async function(req, res, next){
     return list;
 }
 
-module.export = Util;
+module.exports = Util;
