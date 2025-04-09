@@ -34,17 +34,18 @@ nav {
   margin:0;
   padding:0;
 }
+
 #nav-div{
   display: grid;
   color: white;
   background-color: black;
   width: 100%;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   margin: 0;
   padding: 1.5rem;
 }
 
-#nav-div a {
+#nav-div li {
   display:flex;
   justify-content: center;
   color: white;

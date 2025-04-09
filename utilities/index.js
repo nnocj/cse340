@@ -6,7 +6,7 @@ const Util = {}; // this works as an object to store all the functions to create
 Util.getNav = async function(req, res, next){
     let data = await invModel.getClassifications()
     //console.log(data.rows[0])
-    let list = "<ul>"
+    let list = "<ul id='nav-div'>"
     list += '<li><a href="/" title="Homepage">Home</a></li>'
     
     if (data.rows && data.rows.length > 0) {
