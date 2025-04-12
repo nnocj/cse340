@@ -143,7 +143,9 @@ figcaption {
   justify-content: center;
   border: 1px solid rgb(22, 31, 15, 0.2);
   width: 100%;
+  list-style: none;
 }
+
 @media (min-width: 768px) {
 
   body {
