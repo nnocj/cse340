@@ -142,6 +142,8 @@ figcaption {
   display: block;
   justify-content: center;
   border: 1px solid rgb(22, 31, 15, 0.2);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgb(0,0,0,0.1);
   width: 100%;
   list-style: none;
 }
