@@ -146,6 +146,10 @@ figcaption {
   list-style: none;
 }
 
+#inv-display >li>a>img {
+  width:100%;
+}
+
 @media (min-width: 768px) {
 
   body {
