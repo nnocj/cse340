@@ -11,7 +11,7 @@ Util.getNav = async function(req, res, next){
     
     if (data.rows && data.rows.length > 0) {
         data.rows.forEach((row) => {
-            list += `<li><a href="/inv/type/${row.classification_id}" title="See our inventory of ${row.classification_name} vehicles">${row.classification_name}</a></li>`;
+            list += `<li id="nav-link"><a href="/inv/type/${row.classification_id}" title="See our inventory of ${row.classification_name} vehicles">${row.classification_name}</a></li>`;
         });
     }
 
