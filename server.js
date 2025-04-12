@@ -20,7 +20,7 @@ app.use(staticRoutes);
 app.use("/inv", inventoryRoute);
 
 // Home Route
-app.get("/", baseController.buildHome);
+app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Test Error Route
 app.get("/test-error", (req, res, next) => {
@@ -42,10 +42,17 @@ app.use(async (err, req, res, next) => {
 
   const nav = await utilities.getNav(); 
   console.error(`Error at "${req.originalUrl}": ${err.message}`);
+  if (err.status === 404){
+    message = err.message
+  }
+
+  else {
+    message = "Oh no! there was a crash. Maybe try a different route?";
+  }
 
   res.status(err.status || 500).render("errors/error", {
     title: err.status || "Server Error",
-    message: err.message || "Something went wrong.",
+    message,
     nav
   });
 });

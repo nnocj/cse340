@@ -7,7 +7,7 @@ Util.getNav = async function(req, res, next){
     let data = await invModel.getClassifications()
     //console.log(data.rows[0])
     let list = `<ul id="nav-div">`
-    list += '<li><a href="/" title="Homepage">Home</a></li>'
+    list += '<li id="nav-link"><a href="/" title="Homepage">Home</a></li>'
     
     if (data.rows && data.rows.length > 0) {
         data.rows.forEach((row) => {
@@ -52,5 +52,10 @@ Util.buildClassificationGrid = async function(data){
     return grid
   }
 
-  
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req,res, next)).catch(next);
 module.exports = Util;
