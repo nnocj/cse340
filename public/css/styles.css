@@ -108,7 +108,7 @@ article button {
 
 #upgrade-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, min-max(250px, 1fr));
   gap:10px;
 }
 
@@ -177,12 +177,4 @@ figcaption {
     background-color: white;
     padding:10px;
   }
-
-  #inv-display {
-    display: grid;
-    flex-wrap: wrap;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-  }
-
 }
