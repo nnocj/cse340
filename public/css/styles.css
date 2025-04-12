@@ -52,10 +52,9 @@ nav {
   text-decoration-line: none;
 }
 
-#nav-link a {
+#nav-link > a {
   color: white !important;
 }
-
 
 h1 {
   color: black;
