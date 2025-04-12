@@ -154,7 +154,7 @@ figcaption {
 
 .namePrice {
   display: block;
-  justify-content:  center;
+  justify-self:  center;
 }
 @media (min-width: 768px) {
 
