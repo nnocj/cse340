@@ -133,8 +133,9 @@ figcaption {
 /*styling the grid display views of the various car classifications when clicked for view*/
 #inv-display {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 @media (min-width: 768px) {
@@ -160,4 +161,12 @@ figcaption {
     background-color: white;
     padding:10px;
   }
+
+  #inv-display {
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
 }
