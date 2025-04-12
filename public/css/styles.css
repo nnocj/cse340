@@ -153,7 +153,7 @@ figcaption {
 }
 
 .namePrice {
-  display: block;
+  display: flex;
   justify-self:  center;
 }
 @media (min-width: 768px) {
