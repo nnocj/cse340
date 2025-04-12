@@ -139,7 +139,7 @@ figcaption {
 }
 
 #inv-display li {
-  display: block;
+  display: flex;
   justify-content: center;
   border: 1px solid rgb(22, 31, 15, 0.2);
   border-radius: 5px;
