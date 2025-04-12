@@ -150,6 +150,10 @@ figcaption {
   width:100%;
 }
 
+.namePrice {
+  display: block;
+  justify-content:  center;
+}
 @media (min-width: 768px) {
 
   body {
