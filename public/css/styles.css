@@ -130,6 +130,13 @@ figcaption {
   list-style-type: disc;
 }
 
+/*styling the grid display views of the various car classifications when clicked for view*/
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
 @media (min-width: 768px) {
 
   body {
