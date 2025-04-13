@@ -56,7 +56,7 @@ Util.buildClassificationGrid = async function(data){
   Util.buildInventoryItemView = async function(data){
     let grid
     grid = `<div id="item-display">      
-                <img src="${data[0].inv_image}" alt="Image of ${data[0].inv_make} ${data[0].inv_model} on CSE Motors">
+                <img src="${data[0].inv_image}" alt="Image of ${data[0].inv_year} ${data[0].inv_make} ${data[0].inv_model} on CSE Motors">
                 <section id="item-details">
                   <h2>${data[0].inv_make} ${data[0].inv_model}  Details</h2>
                   <p class="details-color-var"><b>Price</b>: $${new Intl.NumberFormat('en-US').format(data[0].inv_price)}</p>
