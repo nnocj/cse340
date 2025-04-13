@@ -64,7 +64,7 @@ Util.buildClassificationGrid = async function(data){
                   <p class="details-color-var"><b>Color</b>: ${data[0].inv_color}</p>
                   <p><b>Miles</b>: ${data[0].inv_miles}</p>
                 </section>
-            </div`
+            </div>` //here is where i got the error that was troubling my code
       return grid;
   }
 
