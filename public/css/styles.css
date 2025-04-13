@@ -16,6 +16,10 @@ body {
   padding:10px;
 }
 
+main {
+  padding: 20px;
+}
+
 #top-header {
   display: flex;
   justify-content: space-between;
@@ -157,6 +161,7 @@ figcaption {
 #item-display{
   display: grid;
   grid-template-columns: 1fr;
+  padding: 10px;
 }
 
 .details-color-var{
@@ -166,6 +171,10 @@ figcaption {
 #item-details {
   display: block;
   justify-content: center;
+}
+
+#item-display img {
+  width: 100% !important;
 }
 
 @media (min-width: 768px) {
@@ -203,6 +212,7 @@ figcaption {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    padding: 10px;
   }
 
 }
