@@ -59,7 +59,7 @@ Util.buildClassificationGrid = async function(data){
                 <img src="${data[0].inv_image}" alt="Image of ${data[0].inv_thumbnail} ${data[0].inv_model} on CSE Motors"/>
                 <section id="item-details">
                   <h2>${data[0].inv_make} ${data[0].inv_model}  Details</h2>
-                  <p class="details-color-var"><b>Price</b>: $${data[0].inv_price}</p>
+                  <p class="details-color-var"><b>Price</b>: $${new Intl.NumberFormat('en-US').format(data[0].inv_price)}</p>
                   <p><b>Description</b>: ${data[0].inv_description}</p>
                   <p class="details-color-var"><b>Color</b>: ${data[0].inv_color}</p>
                   <p><b>Miles</b>: ${data[0].inv_miles}</p>
