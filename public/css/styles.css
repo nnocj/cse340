@@ -56,7 +56,7 @@ nav {
   text-decoration-line: none;
 }
 
-#nav-link a {
+.nav-link a {
   color: white !important;
 }
 
