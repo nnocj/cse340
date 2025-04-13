@@ -153,6 +153,20 @@ figcaption {
   width:100%;
 }
 
+/*Single Item view*/
+#item-display{
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.details-color-var{
+  background-color: rgba(234, 225, 225, 0.8);
+}
+
+#item-details {
+  display: block;
+  justify-content: center;
+}
 
 @media (min-width: 768px) {
 
@@ -181,6 +195,13 @@ figcaption {
     display: grid;
     flex-wrap: wrap;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  /*Single Item view*/
+  #item-display{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
 
