@@ -54,25 +54,25 @@ Util.buildClassificationGrid = async function(data){
 
 
   Util.buildInventoryItemView = async function(data){
-    let view
-    if(data.length <! -1){
-      view = `<div id="item-display">
-                   <img src="${data[0].inv_image}" alt="Image of ${data[0].inv_thumbnail} ${data[0].inv_model} on CSE Motors"/>
-                   <section id="item-details">
-                      <h1>${data[0].inv_make} ${data[0].inv_model}  Details</h1>
+    let grid
+    if(data.length > 0){
+      grid = `<div id="item-display">      
+                    <img src="${data[0].inv_image}" alt="Image of ${data[0].inv_thumbnail} ${data[0].inv_model} on CSE Motors"/>
+                    <section id="item-details">
+                      <h2>${data[0].inv_make} ${data[0].inv_model}  Details</h2>
                       <p><b>Price</b>: $${data[0].inv_price}</p>
                       <p><b>Description</b>: ${data[0].inv_description}</p>
                       <p><b>Color</b>: ${data[0].inv_color}</p>
                       <p><b>Miles</b>: ${data[0].inv_miles}</p>
-                   </section>
+                    </section>
       
               </div`
     }            
     
     else { 
-            view += '<p class="notice">Sorry, no matching vehicle could be found.</p>'
+            grid += '<p class="notice">Sorry, no matching vehicle could be found.</p>'
       }
-      return view;
+      return grid;
 
   }
 /* ****************************************

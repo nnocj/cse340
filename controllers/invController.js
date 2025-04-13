@@ -22,16 +22,16 @@ invCont.buildByClassificationId = async function (req, res, next) {
 
 invCont.buildByItemId = async function (req, res, next) {
   const inv_id = req.params.invId;
-  const data = await invModel.getInventoryByInvId(inv_id)
-  const view = await utilities.buildInventoryItemView(data)
+  const data = await invModel.getInventoryDetailsByInventoryId(inv_id)
+  const grid = await utilities.buildInventoryItemView(data)
   let nav = await utilities.getNav()
   const invYear = data[0].inv_year;
   const invMake = data[0].inv_make;
   const invModel = data[0].inv_model;
-  res.render("./inventory/item", {
+  res.render("./inventory/classification", {
     title: invYear + " " + invMake + " " + invModel,
     nav,
-    view,
+    grid,
   })
 }
 
