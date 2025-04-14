@@ -10,7 +10,7 @@ const staticRoutes = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
 const baseController = require("./controllers/baseController");
 const utilities = require("./utilities"); 
-
+const accountRoute = require("./routes/accountRoute");
 
 /* ***********************
  * Session Secret Middleware
@@ -38,13 +38,14 @@ app.set("view engine", "ejs");
 app.use(expressEjsLayouts);
 app.set("layout", "./layouts/layout");
 
-// Middleware & Routes
+/* -------------------
+-----   Routes   -----
+---------------------*/
 app.use(express.static("public")); 
 app.use(staticRoutes);
-app.use("/inv", inventoryRoute);
-
-// Home Route
-app.get("/", utilities.handleErrors(baseController.buildHome));
+app.use("/account", accountRoute);//account
+app.use("/inv", inventoryRoute);//inventory
+app.get("/", utilities.handleErrors(baseController.buildHome));// Home
 
 // Test Error Route
 app.get("/test-error", (req, res, next) => {

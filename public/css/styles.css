@@ -185,6 +185,43 @@ figcaption {
 #flash-div {
   display:block;
 }
+
+/*Form Styles*/
+#login-form, #register-form {
+  min-width: 90%;
+  justify-self:center;
+  padding: 10px;
+  background-color: rgb(108, 190, 234);
+}
+
+#login-form input, #register-form input {
+  display: block;
+  width:100%;
+  margin-top:5px;
+  margin-bottom: 5px;
+}
+
+#login-form button , #register-form button {
+  display: flex;
+  margin-top: 20px;
+  justify-self: center;
+  padding: 5px;
+  font-size: large;
+  border-radius: 10px;
+  border: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255);
+}
+  
+
+#sign-up-link-info, #sign-in-link-info{
+  display:flex;
+  justify-self: center;
+}
+
+#sign-up-link-info a , #sign-in-link-info a{
+  color:rgb(250, 252, 252);
+}
+
 @media (min-width: 768px) {
 
   body {
@@ -221,6 +258,12 @@ figcaption {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 10px;
+  }
+  #login-form , #register-form{
+    min-width:50% !important;
+    justify-self:center;
+    padding: 10px;
+    background-color: rgb(108, 190, 234);
   }
 
 }
