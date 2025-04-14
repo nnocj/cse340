@@ -20,11 +20,12 @@ app.use(session({
     createTableIfMissing: true,
     pool,
   }),
-  secret: process.dotenv.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET, 
   resave: true,
   saveUninitialized: true,
   name: 'sectionID',
 }))
+
 //Express Message Middleware
 app.use(require("connect-flash")())
 app.use(function(req,res, next){
