@@ -12,16 +12,16 @@
   "dependencies": {
     "connect-flash": "^0.1.1",
     "connect-pg-simple": "^10.0.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
-    "express": "^4.18.2",
+    "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1",
     "express-messages": "^1.0.1",
     "express-session": "^1.18.1",
-    "pg": "^8.8.0"
+    "pg": "^8.14.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.9"
   },
   "packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
 }
