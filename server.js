@@ -20,7 +20,7 @@ app.use(session({
     createTableIfMissing: true,
     pool,
   }),
-  secret: process.env.SESSION_SECRET,
+  secret: process.dotenv.SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
   name: 'sectionID',
