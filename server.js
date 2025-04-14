@@ -1,5 +1,5 @@
 const express = require("express");
-const env = require("dotenv").config();
+const dotenv = require("dotenv").config();
 const app = express();
 const session = require("express-session");
 const pool = require("./database/");
