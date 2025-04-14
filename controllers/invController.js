@@ -35,4 +35,18 @@ invCont.buildByItemId = async function (req, res, next) {
   })
 }
 
+invCont.buildErrorView = async function (res, next) {
+ 
+  let nav = await utilities.getNav()
+  let message = `<h1>Server Error</h1>
+                <div id="error-message-container">
+                    <p>Oh no!, there was a crash. Maybe try a different route.</p>
+                </div>`   
+  res.render("./errors/error", {
+    nav,
+    message,
+  })
+}
+
+
 module.exports = invCont
