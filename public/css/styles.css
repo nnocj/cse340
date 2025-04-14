@@ -177,6 +177,11 @@ figcaption {
   width: 100% !important;
 }
 
+.notice {
+  color: orangered;
+  font-style: italic;
+}
+
 @media (min-width: 768px) {
 
   body {
