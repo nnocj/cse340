@@ -22,7 +22,7 @@ app.use(session({
   }),
   secret: process.env.SESSION_SECRET,
   resave: true,
-  saveUnintialized: true,
+  saveUninitialized: true,
   name: 'sectionID',
 }))
 //Express Message Middleware
