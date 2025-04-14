@@ -182,6 +182,9 @@ figcaption {
   font-style: italic;
 }
 
+#flash-div {
+  display:block;
+}
 @media (min-width: 768px) {
 
   body {
