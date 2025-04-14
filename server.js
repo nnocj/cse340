@@ -42,10 +42,10 @@ app.set("layout", "./layouts/layout");
 -----   Routes   -----
 ---------------------*/
 app.use(express.static("public")); 
-app.use(staticRoutes);
 app.use("/account", accountRoute);//account
 app.use("/inv", inventoryRoute);//inventory
 app.get("/", utilities.handleErrors(baseController.buildHome));// Home
+app.use(staticRoutes);
 
 // Test Error Route
 app.get("/test-error", (req, res, next) => {
