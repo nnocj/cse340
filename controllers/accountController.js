@@ -1,4 +1,5 @@
-const utilities = require("../utilities/index")
+const utilities = require("../utilities/index");
+const accountModel = require("../models/account-model");
 
 /* ***************************
  *  Build Login
@@ -19,16 +20,17 @@ async function buildRegister(req, res, next) {
   })
 }
 
-async function registerAccount(req, res, next) {
+async function registerAccount(req, res) {
       let nav = await utilities.getNav();
       const { account_firstname, account_lastname, account_email, account_password} = req.body;
-      const regResult = await account-model.registerAccount(account_firstname, account_lastname, account_email, account_password);
+      const regResult = await accountModel.registerAccount(account_firstname, account_lastname, account_email, account_password);
 
       if (regResult) {
         req.flash("notice", `Congratulations! ${account_lastname}. You are registered. Please login`);
-        req.status(201).render("accounts/login", {
+        res.status(201).render("accounts/login", {
           title: "Login",
           nav,
+          error: null,
         })
       }
       else { // this ensure that there is always a chance to try again.
