@@ -15,3 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 30000); // Toggle every 30 seconds.
     }
 });
+
+// Show or hide password
+const togglePassword = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('password');
+
+togglePassword.addEventListener('change', function () {
+  if (this.checked) {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+});

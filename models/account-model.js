@@ -5,8 +5,8 @@ const pool= require("../database/index");
 * *************************** */
 async function registerAccount(account_firstname, account_lastname, account_email, account_password) {
     try {
-        const data = await pool.query(`INSERT INTO public.account account_firstname, account_lastname, account_email, account_password`);
-        return await pool(sql, [account_firstname, account_lastname, account_email, account_password]);
+        const sql = "INSERT INTO account (account_firstname, account_lastname, account_email, account_password, account_type) VALUES ($1, $2, $3, $4, 'client')  RETURNING *"; // first time reaching backend from the frontend view.
+        return await pool.query(sql, [account_firstname, account_lastname, account_email, account_password]);
     }
     catch (error) {
         return error.message;

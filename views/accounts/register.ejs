@@ -21,8 +21,7 @@
     <input type="email" id="email" name="account_email" placeholder="john@examplemail.com" required value="<%= locals.account_email || '' %>">
     
     <label for="password">Password: </label>
-    <input type="password" id="password" name="password" required minlength="6" placeholder="3$645west7lX" value="<%= locals.account_password || '' %>">
-    
+    <input type="password" id="password" name="account_password"   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required minlength="12" placeholder="SecurePass#2025" value="<%= locals.account_password || '' %>">
     <div class="registration-note">Please note that passwords must:</div>
     <ul class="registration-note">
         <li>12 characters in length, minimum</li>
@@ -30,7 +29,10 @@
         <li>contain at least 1 number</li>
         <li>contain at least 1 special character</li>
     </ul>
+    <label for="togglePassword">Show Password: </label>
+      <input type="checkbox" id="togglePassword" name="togglePassword">
+    
     
     <button type="submit" value="submit">Register</button>
-    <p id="sign-in-link-info">Already have an account? <a href="/account/login">Sign-in</a></p>
+    <p id="sign-in-link-info">Already have an account?&nbsp;<a href="/account/login">Sign-in </a></p>
 </form>

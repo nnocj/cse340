@@ -1,5 +1,6 @@
 const utilities = require("../utilities/index");
 const accountModel = require("../models/account-model");
+const bcrypt = require("bcryptjs");
 
 /* ***************************
  *  Build Login
@@ -21,9 +22,14 @@ async function buildRegister(req, res, next) {
 }
 
 async function registerAccount(req, res) {
+
+     
       let nav = await utilities.getNav();
       const { account_firstname, account_lastname, account_email, account_password} = req.body;
-      const regResult = await accountModel.registerAccount(account_firstname, account_lastname, account_email, account_password);
+      const hashPassword = await bcrypt.hash(account_password, 10); // here is where I hash the password 
+     
+     
+      const regResult = await accountModel.registerAccount(account_firstname, account_lastname, account_email, hashPassword);
 
       if (regResult) {
         req.flash("notice", `Congratulations! ${account_lastname}. You are registered. Please login`);
