@@ -13,4 +13,15 @@ async function registerAccount(account_firstname, account_lastname, account_emai
     }
 }
 
-module.exports = {registerAccount};
+async function checkExistingEmail(account_email) {
+    try {
+        const sql = "SELECT * FROM account WHERE account_email = $1";
+        const email = await pool.query(sql, [account_email]);//it's interesting the way it indexes to obtain the right data
+        return email.rowCount;
+    }
+    catch (error) {
+        return error.message;
+    }
+}
+
+module.exports = {registerAccount, checkExistingEmail};

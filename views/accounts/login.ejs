@@ -5,9 +5,11 @@
     } %>
   
   <%# messages() %>
-    <form id="login-form">
+    <form id="login-form" action="/account/login" method="POST">
         <label for="email">Email: </label><input type="email" id="email" name="account_email" placeholder="john@examplemail.com" required>
         <label for="password">Password: </label><input type="password" id="password" name="account_password" placeholder="SecurePass#2025">
+        <label for="togglePassword">Show Password: </label>
+          <input type="checkbox" id="togglePassword" name="togglePassword">
         <button type="submit">Login</button>
         <p id="sign-up-link-info">No account?&nbsp;<a href="/account/register"> Sign-up</a></p>
 

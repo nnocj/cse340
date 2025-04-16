@@ -19,7 +19,6 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
-
 invCont.buildByItemId = async function (req, res, next) {
   const inv_id = req.params.invId;
   const data = await invModel.getInventoryDetailsByInventoryId(inv_id)
@@ -48,5 +47,15 @@ invCont.buildErrorView = async function (res, next) {
   })
 }
 
+invCont.buildAddInventory = async function(req, res, next) {
+  let nav = await utilities.getNav();
+  let classificationList = await utilities.buildClassificationOptionList();
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    classificationList,
+    error: null,
+  })
+}
 
 module.exports = invCont

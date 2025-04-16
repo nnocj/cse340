@@ -45,6 +45,31 @@ async function buildClassificationGrid(data) {
   return grid
 }
 
+/* **************************************
+ * Build the classification view HTML
+ ************************************** */
+async function buildClassificationOptionList(classification_id = null) {
+  let data = await invModel.getClassifications();
+  let classificationList = ''; 
+
+  if (data.rows.length > 0) {
+    classificationList = '<select name="classification_id" id="classificationList" required>';
+    classificationList += '<option value="">Select a Classification</option>';
+
+    data.rows.forEach(row => {
+      const selected = row.classification_id == classification_id ? 'selected' : '';
+      classificationList += `<option value="${row.classification_id}" ${selected}>${row.classification_name}</option>`;
+    });
+
+    classificationList += '</select>';
+  } else {
+    classificationList = '<p class="notice">Sorry, no classification could be found.</p>';
+  }
+
+  return classificationList;
+}
+
+
 /* ****************************************
  * Build the inventory item view HTML
  **************************************** */
@@ -77,5 +102,6 @@ module.exports = {
   getNav,
   buildClassificationGrid,
   buildInventoryItemView,
-  handleErrors
+  handleErrors,
+  buildClassificationOptionList,
 }

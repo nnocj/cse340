@@ -221,6 +221,9 @@ figcaption {
   color:rgb(186, 68, 4);
 }
 
+#registeration-note {
+  font-style: italic;
+}
 /* password view checker*/
 
 #togglePassword {

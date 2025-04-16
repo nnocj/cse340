@@ -6,7 +6,13 @@
 
 <%- messages() %>
 
-
+<% if (typeof errors !== 'undefined' && errors.array) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
 
 
 <form id="register-form" action="/account/register" method="POST">
@@ -22,13 +28,7 @@
     
     <label for="password">Password: </label>
     <input type="password" id="password" name="account_password"   pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" required minlength="12" placeholder="SecurePass#2025" value="<%= locals.account_password || '' %>">
-    <div class="registration-note">Please note that passwords must:</div>
-    <ul class="registration-note">
-        <li>12 characters in length, minimum</li>
-        <li>contain at least 1 capital letter</li>
-        <li>contain at least 1 number</li>
-        <li>contain at least 1 special character</li>
-    </ul>
+    <p id="registration-note">Please note that passwords must contain at least 12 characters in length. Contain at least 1 capital letter,  1 number and  1 special character</p>
     <label for="togglePassword">Show Password: </label>
       <input type="checkbox" id="togglePassword" name="togglePassword">
     

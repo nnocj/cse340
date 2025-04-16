@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setInterval(() => {
             // Toggle visibility
             if (flashDiv.style.display === "none") {
-                flashDiv.style.display = "block";
+                //flashDiv.style.display = "block";
             } else {
                 flashDiv.style.display = "none";
             }
