@@ -4,17 +4,17 @@
   
   <%- messages() %>
   
-  <% if (typeof errors !== 'undefined' && errors.array) { %>
+  <% if (errors && errors.length > 0) { %>
     <ul class="notice">
-      <% errors.array().forEach(error => { %>
+      <% errors.forEach(error => { %>
         <li><%= error.msg %></li>
       <% }) %>
     </ul>
   <% } %>
   
-  <form id="add-inventory-form" action="/inv/add-inventory" method="POST">
+  <form id="add-inventory-form" action="/inv/add-inventory" enctype="multipart/form-data" method="POST">
     <h1>Field is required</h1>
-    <%- classificationList %>
+    <%- classificationOptionList %>
     <label for="inv_make">Inventory Make:</label>
     <input type="text" id="inv_make" name="inv_make" required value="<%= locals.inv_make || '' %>">
   
@@ -22,13 +22,16 @@
     <input type="text" id="inv_model" name="inv_model" required value="<%= locals.inv_model || '' %>">
   
     <label for="inv_year">Inventory Year:</label>
-    <input type="text" id="inv_year" name="inv_year" required value="<%= locals.inv_year || '' %>">
+    <input type="number" id="inv_year" length="4" name="inv_year" placeholder="2020" required value="<%= locals.inv_year || '' %>">
   
     <label for="inv_description">Description:</label>
-    <input type="text" id="inv_description" name="inv_description" required value="<%= locals.inv_description || '' %>">
+    <input type="text" id="inv_description" minlength="10" name="inv_description" placeholder="Should be at least 10 characters long" required value="<%= locals.inv_description || '' %>">
   
+    <label for="inv_image">Image:</label>
+    <input type="file" id="inv_image" name="inv_image" accept=".jpeg,.jpg,.png,.webp" required>
+
     <label for="inv_thumbnail">Inventory Thumbnail:</label>
-    <input type="text" id="inv_thumbnail" name="inv_thumbnail" required value="<%= locals.inv_thumbnail || '' %>">
+    <input type="file" id="inv_thumbnail" name="inv_thumbnail" accept=".jpeg,.jpg,.png,.webp" required>
   
     <label for="inv_price">Price:</label>
     <input type="number" id="inv_price" name="inv_price" required value="<%= locals.inv_price || '' %>">
@@ -39,6 +42,6 @@
     <label for="inv_color">Color:</label>
     <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color || '' %>">
   
-    <button type="submit">Add Inventory</button>
+    <button type="submit" value="submit">Add Inventory</button>
   </form>
   

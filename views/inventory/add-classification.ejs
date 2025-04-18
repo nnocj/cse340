@@ -6,7 +6,7 @@
   
   <%- messages() %>
   
-  <% if (typeof errors !== 'undefined' && errors.array) { %>
+  <% if (errors  && errors.length > 0) { %>
     <ul class="notice">
       <% errors.array().forEach(error => { %>
         <li><%= error.msg %></li>
@@ -17,7 +17,7 @@
   
   <form id="add-classification-form" action="/inv/add-classification" method="POST">
       <h1>Feild is required</h1>
-      <b><p id="italics-class-note">NAME MUST BE ALPHABETIC CHARACTERS ONLY</p></b>
+      <b><p id="italics-class-note">Name must start with a capital Letter. eg. Classic or Modern</p></b>
       <label for="classification_name">Classification Name: </label>
       <input type="text" id="classification_name" name="classification_name" required value="<%= locals.classification_name || '' %>">
       <button type="submit" value="submit">Add Classification</button>

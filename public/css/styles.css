@@ -186,15 +186,16 @@ figcaption {
   display:block;
 }
 
-/*Form Styles*/
-#login-form, #register-form {
+/*Form and Views Styles*/
+#login-form, #register-form, #add-inventory-form, #add-classification-form, #vehicle-management  {
   min-width: 90%;
   justify-self:center;
   padding: 10px;
   background-color: rgb(108, 190, 234);
 }
 
-#login-form input, #register-form input {
+#login-form input, #register-form input, #add-inventory-form input, 
+#add-classification-form input, #vehicle-management a {
   display: block;
   width:100%;
   margin-top:5px;
@@ -221,7 +222,7 @@ figcaption {
   color:rgb(186, 68, 4);
 }
 
-#registeration-note {
+#registeration-note, #italics-class-note{
   font-style: italic;
 }
 /* password view checker*/
@@ -233,6 +234,8 @@ figcaption {
   padding: 0;
   width: 20% !important;
 }
+
+/* Styling the */
 
 @media (min-width: 768px) {
 
