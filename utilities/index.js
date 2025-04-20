@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model")
 
+
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
@@ -86,6 +87,19 @@ async function buildInventoryItemView(data) {
 }
 
 /* ****************************************
+ *  Check Login
+ * ************************************ */
+async function checkIfLoggedIn(req, res, next) {
+  if (res.locals.loggedin) {
+    next()
+  }
+  else {
+    req.flash("notice", "Please log in")
+    res.redirect("/account/login")
+  }
+}
+
+/* ****************************************
  * Middleware For Handling Errors
  **************************************** */
 function handleErrors(fn) {
@@ -101,4 +115,5 @@ module.exports = {
   buildInventoryItemView,
   handleErrors,
   buildClassificationOptionList,
+  checkIfLoggedIn,
 }

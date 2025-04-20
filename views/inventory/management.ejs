@@ -1,22 +1,29 @@
 <% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
-  
-  <%- messages() %>
-  
-  <% if (typeof errors !== 'undefined' && errors.array) { %>
-    <ul class="notice">
-      <% errors.array().forEach(error => { %>
-        <li><%= error.msg %></li>
-      <% }) %>
-    </ul>
-  <% } %>
-  
+  <h1><%= title %></h1>
+<% } %>
+
+<%- messages() %>
+
+<% var errors = typeof errors !== 'undefined' ? errors : null; %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% (Array.isArray(errors) ? errors : [errors]).forEach(error => { %>
+      <li><%= error.msg || error %></li>
+    <% }) %>
+  </ul>
+<% } %>
  
   <div id="vehicle-management">
+    <h1>Manage Inventory</h1>
+    <p>Choose a classification to see those inventory items.</p>
+    <%- classificationOptionList %>
      <a href="/inv/add-classification">Add new classification</a>
      <a href="/inv/add-inventory">Add new inventory</a>
+
+     <table id="inventoryDisplay"></table>
+     <noscript>JavaScript must be enabled to use this page</noscript>
+
+     <script src="../../js/inventory.js"></script>
 
   </div>

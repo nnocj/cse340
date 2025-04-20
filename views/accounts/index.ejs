@@ -1,0 +1,38 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+<%- messages() %>
+
+<% if (typeof errors !== "undefined" && errors.length > 0) { %>
+  <ul class="notice">
+    <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<!-- Navbar or login section -->
+<% if (loggedin) { %>
+  <li><a href="/account">Welcome <%= shareableAccountData?.account_firstname || 'Basic' %></a></li>
+  <li><a href="/account/logout">Logout</a></li>
+<% } else { %>
+  <li><a href="/account/login">My Account</a></li>
+<% } %>
+
+<!-- Account management view -->
+<% if (shareableAccountData) { %>
+  <h2>Welcome <%= shareableAccountData.account_firstname %></h2>
+
+  <% if (shareableAccountData.account_type === "Employee" || shareableAccountData.account_type === "Admin") { %>
+    <h3>Inventory Management</h3>
+    <p><a href="/inv">Access Inventory Management</a></p>
+  <% } %>
+<% } else { %>
+  <h2>Welcome Guest</h2>
+<% } %>
+
+<div id="signed-in-account-index-page">
+  <p>Welcome, You're logged in</p>
+  <a href="/account/authorizedUpdateAccount/<%= shareableAccountData.inv_id %>">Edit Account Information</a>
+</div>

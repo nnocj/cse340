@@ -24,4 +24,14 @@ async function checkExistingEmail(account_email) {
     }
 }
 
-module.exports = {registerAccount, checkExistingEmail};
+async function getAccountByEmail(account_email) {// here for week 5 i'm being more careful witht the data i send to the cleint
+    try {
+        const data = await pool.query(`SELECT * FROM account WHERE account_email = $1`,[account_email]);//it's interesting the way it indexes to obtain the right data
+       
+        return data.rows[0] || null;
+    }
+    catch (error) {
+        return new Error("No matching email found");
+    }
+}
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail};

@@ -9,6 +9,8 @@ const flash = require("connect-flash");
 const expressMessages = require("express-messages");
 const expressEjsLayouts = require("express-ejs-layouts");
 const pgSession = require("connect-pg-simple")(session);
+const cookieParser = require("cookie-parser");
+const middleware = require("./middleware/json-web-token");
 
 const app = express();
 
@@ -27,16 +29,19 @@ const utilities = require("./utilities");
  ***************************************/
 
 // Body Parser Middleware
+app.use(cookieParser()); //week 5 which i defined or utilized in the upload.js of the middleware folder
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+//Json Web TokenMiddleware
+app.use(middleware.checkJWTToken);// this will be take care of my authentications.
 // Static Files Middleware
-app.use(express.static("public"));
+//app.use(express.static("public"));
+
 
 // Session Middleware
 app.use(
   session({
-    store: new pgSession({
+    store: new pgSession({     //useful both local and online production
       pool,
       createTableIfMissing: true,
     }),
@@ -51,6 +56,13 @@ app.use(
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.messages = expressMessages(req, res);
+  next();
+});
+
+// Middleware to expose session info to views
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false;
+  res.locals.firstname = req.session.firstname || "";
   next();
 });
 

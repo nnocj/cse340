@@ -38,16 +38,13 @@ async function getInventoryByClassificationId(classification_id){
 
 async function getInventoryDetailsByInventoryId(inv_id) {
     try {
-        const data = await pool.query(`SELECT * FROM public.inventory 
-            WHERE inv_id = $1`, [inv_id])
-
-            return data.rows;
+        const data = await pool.query(`SELECT * FROM public.inventory i JOIN public.classification AS c 
+                                       ON i.classification_id = c.classification_id  WHERE inv_id = $1`, [inv_id]);
+        return data.rows;
+    } catch (error) {
+        console.error("getInventoryItem error:", error);
+        return []; // Return an empty array to avoid undefined
     }
-
-    catch (error) {
-        console.error("getInventoryItem error" + error)
-    }
-
 }
 
 
@@ -65,6 +62,32 @@ async function addInventory(inv_make, inv_model,inv_year,inv_description, inv_im
 }
 
 /* *****************************
+*   Edit inventory item info
+* *************************** */
+async function editInventory(inv_id, inv_make, inv_model,inv_year,inv_description, inv_image, inv_thumbnail, inv_price, inv_miles,inv_color, classification_id) {
+    try {
+        const sql = "UPDATE public.inventory SET inv_make = $1, inv_model = $2, inv_year = $3, inv_description = $4, inv_image = $5,  inv_thumbnail = $6, inv_price = $7, inv_miles =$8, inv_color =$9, classification_id =$10 WHERE inv_id =$11 RETURNING *"; // fourth time reaching backend from the frontend view.
+        return await pool.query(sql, [inv_make, inv_model,inv_year,inv_description, inv_image, inv_thumbnail, inv_price, inv_miles,inv_color, classification_id, inv_id]);
+    }
+    catch (error) {
+        return error.message;
+    }
+}
+
+/* *****************************
+*   Edit inventory item info
+* *************************** */
+async function deleteInventory(inv_id) {
+    try {
+        const sql = "DELETE FROM public.inventory WHERE inv_id =$1 RETURNING*"; // fifth time reaching backend from the frontend view.
+        return await pool.query(sql, [inv_id]);
+    }
+    catch (error) {
+        return new Error("Delete Inventory Error");
+    }
+}
+
+/* *****************************
 *   Add new Classification item
 * *************************** */
 async function addClassification(classification_name) {
@@ -76,4 +99,6 @@ async function addClassification(classification_name) {
         return error.message;
     }
 }
-module.exports = {getClassifications,getClassificationByName, getInventoryDetailsByInventoryId, getInventoryByClassificationId, addInventory, addClassification};
+module.exports = {getClassifications,getClassificationByName, getInventoryDetailsByInventoryId,
+                 getInventoryByClassificationId, addInventory, addClassification, editInventory,
+                deleteInventory};

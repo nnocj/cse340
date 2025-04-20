@@ -187,7 +187,8 @@ figcaption {
 }
 
 /*Form and Views Styles*/
-#login-form, #register-form, #add-inventory-form, #add-classification-form, #vehicle-management  {
+#login-form, #register-form, #add-inventory-form, 
+#edit-inventory-form, #add-classification-form, #vehicle-management, #delete-inventory-form  {
   min-width: 90%;
   justify-self:center;
   padding: 10px;
@@ -195,7 +196,7 @@ figcaption {
 }
 
 #login-form input, #register-form input, #add-inventory-form input, 
-#add-classification-form input, #vehicle-management a {
+#add-classification-form input, #edit-inventory-form input, #delete-inventory-form input, #vehicle-management a {
   display: block;
   width:100%;
   margin-top:5px;
@@ -235,7 +236,11 @@ figcaption {
   width: 20% !important;
 }
 
-/* Styling the */
+/* Styling the iD tools sections*/
+.tools-list a {
+  color: white !important;
+  text-decoration-color: white !important;
+}
 
 @media (min-width: 768px) {
 

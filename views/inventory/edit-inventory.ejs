@@ -1,0 +1,76 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+  
+  <%- messages() %>
+  
+  <% if (errors && errors.length > 0) { %>
+    <ul class="notice">
+      <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+
+  
+  <form id="edit-inventory-form" action="/inv/authorizedEditInventory/<%= locals.inv_id %>" enctype="multipart/form-data" method="POST">
+    <h1>Field is required</h1>
+    <%- classificationOptionList %>
+    <label for="inv_make">Inventory Make:</label>
+    <input type="text" id="inv_make" name="inv_make" required value="<%= locals.inv_make || '' %>">
+  
+    <label for="inv_model">Model:</label>
+    <input type="text" id="inv_model" name="inv_model" required value="<%= locals.inv_model || '' %>">
+  
+    <label for="inv_year">Inventory Year:</label>
+    <input type="number" id="inv_year" length="4" name="inv_year" placeholder="2020" required value="<%= locals.inv_year || '' %>">
+  
+    <label for="inv_description">Description:</label>
+    <input type="text" id="inv_description" minlength="10" name="inv_description" placeholder="Should be at least 10 characters long" required value="<%= locals.inv_description || '' %>">
+  
+      <!-- To ensure that the image is asked to show only if one was stored in the first place-->
+    <label>Current Image:</label>
+        <% if (locals.inv_image) { %>
+          <img src="<%= locals.inv_image %>" alt="Inventory Image" width="200">
+        <% } else { %>
+          <p>No image uploaded</p>
+        <% } %>
+    <!-- Hidden input to preserve existing image path -->
+    <input type="hidden" name="existing_image" value="<%= locals.inv_image %>">    
+
+    <label for="inv_image">Replace Image:</label>
+    <input type="file" id="inv_image" name="inv_image" accept=".jpeg,.jpg,.png,.webp">
+
+    <!-- To ensure that the thumbnail is asked to show only if one was stored in the first place-->
+    <label>Current Thumbnail:</label>
+        <% if (locals.inv_thumbnail) { %>
+          <img src="<%= locals.inv_thumbnail %>" alt="Inventory Thumbnail" width="100">
+        <% } else { %>
+          <p>No thumbnail available</p>
+        <% } %>
+     <!-- Hidden input to preserve existing thumbnail path: so that if none is select i still keep my original -->
+     <input type="hidden" name="existing_thumbnail" value="<%= locals.inv_thumbnail %>">   
+    
+    <label for="inv_thumbnail">Replace Thumbnail:</label>
+    <input type="file" id="inv_thumbnail" name="inv_thumbnail" accept=".jpeg,.jpg,.png,.webp">
+  
+    <label for="inv_price">Price:</label>
+    <input type="number" id="inv_price" name="inv_price" required value="<%= locals.inv_price || '' %>">
+  
+    <label for="inv_miles">Miles:</label>
+    <input type="number" id="inv_miles" name="inv_miles" required value="<%= locals.inv_miles || '' %>">
+  
+    <label for="inv_color">Color:</label>
+    <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color || '' %>">
+  
+    <button type="submit" disabled value="submit">Update Vehicle</button>
+     <!--this-that-the-id-is-hidden-->
+    <input type="hidden" name="inv_id"
+   
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
+
+    <script src="../../js/inv-update.js"></script>
+  </form>
+  
