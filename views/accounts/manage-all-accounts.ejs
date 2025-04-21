@@ -1,0 +1,29 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+  
+  <%- messages() %>
+  
+  <% var errors = typeof errors !== 'undefined' ? errors : null; %>
+  
+  <% if (errors) { %>
+    <ul class="notice">
+      <% (Array.isArray(errors) ? errors : [errors]).forEach(error => { %>
+        <li><%= error.msg || error %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+   
+    <div id="accounts-management">
+      <h1>Manage All Users Account</h1>
+      <p>Choose a classification to see those inventory items.</p>
+     
+       <a href="/inv/add-classification">Add new classification</a>
+       <a href="/inv/add-inventory">Add new inventory</a>
+  
+       <table id="inventoryDisplay"></table>
+       <noscript>JavaScript must be enabled to use this page</noscript>
+  
+       <script src="../../js/inventory.js"></script>
+  
+    </div>

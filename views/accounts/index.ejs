@@ -20,19 +20,27 @@
   <li><a href="/account/login">My Account</a></li>
 <% } %>
 
-<!-- Account management view -->
+<!-- Account management view and Privelleges-->
 <% if (shareableAccountData) { %>
   <h2>Welcome <%= shareableAccountData.account_firstname %></h2>
 
-  <% if (shareableAccountData.account_type === "Employee" || shareableAccountData.account_type === "Admin") { %>
+  <% if (["Employee", "Admin"].includes(shareableAccountData.account_type)) { %>
     <h3>Inventory Management</h3>
     <p><a href="/inv">Access Inventory Management</a></p>
   <% } %>
+
+  <% if (shareableAccountData.account_type === "Admin") { %>
+    <h3>Manage Users</h3>
+    <p><a href="/account/authorizedManageUsers/<%= shareableAccountData.account_id %>">Manage Users</a></p>
+  <% } %>
+
 <% } else { %>
   <h2>Welcome Guest</h2>
 <% } %>
 
 <div id="signed-in-account-index-page">
   <p>Welcome, You're logged in</p>
-  <a href="/account/authorizedUpdateAccount/<%= shareableAccountData.inv_id %>">Edit Account Information</a>
+  <a href="/account/authorizedEditAccount/<%= shareableAccountData.account_id  %>">Edit Account Information</a>
 </div>
+
+

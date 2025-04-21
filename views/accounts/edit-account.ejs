@@ -1,0 +1,65 @@
+<!-- This is the pattern of rendering values sent by the back end into the client side-->
+
+<!-- This is to handle title value forwarded to the client side-->
+<% if (title) { %>
+    <h1><%= title %></h1>
+  <% } %>
+  
+  <%- messages() %>
+
+  <!-- This is to handle error messsages data forwarded to the client side-->
+  
+  <% if (errors && errors.length > 0) { %>
+    <ul class="notice">
+      <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+<!-- This is to handle flash messsages data forwarded to the client side-->
+  <div id="flash-message-container">
+    <% if (messages('notice').length) { %>
+      <div class="flash-message success"><%= messages('notice')[0] %></div>
+    <% } %>
+  </div>
+   
+ 
+  <div id="full-account-update-page">
+    <form id="update-account-general-info-form" action="/account/authorizedEditAccountInfo/<%= locals.account_id %>" enctype="application/x-www-form-urlencoded" method="POST">
+        <h1>Field is required</h1>
+        <label for="account_firstname">First Name:</label>
+        <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.account_firstname || '' %>">
+      
+        <label for="account_lastname">Last Name:</label>
+        <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname || '' %>">
+      
+        <label for="account_email">Acccount Email:</label>
+        <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email || '' %>">
+
+        <button type="submit" disabled value="submit">Update Account Info</button>
+         <!--this-that-the-id-is-hidden-->
+        <input type="hidden" name="inv_id"
+       
+        <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+        <% } %>>
+    </form>
+    <form id="edit-account-password-form" action="/account/authorizedEditAccountPassword/<%= locals.account_id %>" enctype="application/x-www-form-urlencoded" method="POST">
+        <h1>Field is required</h1>
+        <label for="account_password">Change Account Password:</label>
+        <input type="text" id="account_password" name="account_password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" placeholder="New Password" required value="<%= locals.account_password || '' %>">
+        <button type="submit" disabled value="submit">Change Password</button>
+         <!--this-that-the-id-is-hidden-->
+        <input type="hidden" name="account_id"
+       
+        <% if(locals.account_id) { %> value="<%= locals.account_id %>"
+        <% } %>>
+    </form>
+    <a href="/account/" id="leave-page-link">Leave Page</a>
+        
+    <script src="../../js/account-update.js"></script>
+  </div>
+  
+
+  
+  

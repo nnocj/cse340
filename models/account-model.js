@@ -34,4 +34,43 @@ async function getAccountByEmail(account_email) {// here for week 5 i'm being mo
         return new Error("No matching email found");
     }
 }
-module.exports = {registerAccount, checkExistingEmail, getAccountByEmail};
+
+async function getAccountDetailsByAccountId(account_id) {
+    try {
+        const data = await pool.query(`SELECT * FROM public.account WHERE account_id = $1`, [account_id]);
+        return data.rows;
+    } catch (error) {
+        console.error("getAccount error:", error);
+        return []; // Return an empty array to avoid undefined
+    }
+}
+
+/* *****************************
+*   Edit Account info
+* *************************** */
+async function editAccountInfo(account_id, account_firstname, account_lastname, account_email) {
+    try {
+        const sql = "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id =$4 RETURNING *"; // fourth time reaching backend from the frontend view.
+        return await pool.query(sql, [account_firstname, account_lastname, account_email, account_id]);
+    }
+    catch (error) {
+        return error.message;
+    }
+}
+
+/* *****************************
+*   Edit Account Password
+* *************************** */
+async function editAccountPassword(account_id, account_password) {
+
+    try {
+        const sql = "UPDATE public.account SET account_password = $1 WHERE account_id =$2 RETURNING *"; // fourth time reaching backend from the frontend view.
+        return await pool.query(sql, [account_password, account_id]);
+    }
+    catch (error) {
+        return error.message;
+    }
+}
+
+
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountDetailsByAccountId, editAccountInfo, editAccountPassword};

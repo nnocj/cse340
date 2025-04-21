@@ -18,5 +18,22 @@ function checkEmployeeOrAdmin(req, res, next) {
     next();
 }
 
+function checkUserIsAnAdmin(req, res, next) {
+    const user = res.locals.shareableAccountData;
 
-module.exports = {checkEmployeeOrAdmin};
+    if (!user) {
+        req.flash("notice", "You must be logged in to access this page.");
+        return res.redirect("/account/login");
+    }
+
+    const allowedTypes = ["Admin"];
+    if (!allowedTypes.includes(user.account_type)) {
+        req.flash("notice", "Access denied. Admin account required.");
+        return res.redirect("/account/login");
+    }
+
+    next();
+}
+
+
+module.exports = {checkEmployeeOrAdmin, checkUserIsAnAdmin};

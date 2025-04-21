@@ -188,6 +188,7 @@ figcaption {
 
 /*Form and Views Styles*/
 #login-form, #register-form, #add-inventory-form, 
+#update-account-general-info-form, #edit-account-password-form,
 #edit-inventory-form, #add-classification-form, #vehicle-management, #delete-inventory-form  {
   min-width: 90%;
   justify-self:center;
@@ -196,7 +197,9 @@ figcaption {
 }
 
 #login-form input, #register-form input, #add-inventory-form input, 
-#add-classification-form input, #edit-inventory-form input, #delete-inventory-form input, #vehicle-management a {
+#update-account-general-info-form input, #edit-account-password-form input,
+#add-classification-form input, #edit-inventory-form input, 
+#delete-inventory-form input, #vehicle-management a {
   display: block;
   width:100%;
   margin-top:5px;
@@ -240,6 +243,13 @@ figcaption {
 .tools-list a {
   color: white !important;
   text-decoration-color: white !important;
+}
+
+#leave-page-link {
+  display: flex;
+  width: 95%;
+  padding: 10px;
+  justify-content: flex-end;
 }
 
 @media (min-width: 768px) {
