@@ -11,9 +11,9 @@ const checkUserType = require("../middleware/check-user-type");
  ******  Secured Account Routes ***
             Week 5
  * *******************************/
-// Here i most times check tokens or unique identity or relations with the system,
-//then check obedience to rules, return disobedience for correction, then when corrected, allowing access to functions
-// Just like the celestial kingdom 😂
+/* Here i most times check tokens or unique identity or relations with the system,
+then check obedience to rules, return disobedience for correction, then when corrected, 
+ allowing access to functions Just like the celestial kingdom 😂*/
 router.get("/authorizedEditAccount/:account_id", checkJWTToken.checkJWTToken, utilities.handleErrors(accountController.buildEditAccountPage));
 router.post("/authorizedEditAccountPassword/:account_id", checkJWTToken.checkJWTToken, regValidate.accountPasswordRules(), utilities.handleErrors(accountController.editAccountPassword));
 router.post("/authorizedEditAccountInfo/:account_id", checkJWTToken.checkJWTToken, regValidate.accountInfoRules(), utilities.handleErrors(accountController.editAccountInfo));
