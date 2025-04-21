@@ -225,6 +225,9 @@ figcaption {
 #sign-up-link-info a , #sign-in-link-info a{
   color:rgb(186, 68, 4);
 }
+.red {
+  color: red;
+}
 
 #registeration-note, #italics-class-note{
   font-style: italic;
