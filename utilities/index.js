@@ -85,6 +85,50 @@ async function buildInventoryItemView(data) {
     </div>
   `
 }
+/**
+ * Build the Manage All User Accounts Table item view HTML
+ * using params - Array of account objects
+ * So i will be making usse o the data id to execute my tasks.
+ */
+async function buildManageAllUserAccountsTable(data) {
+  let rows = "";
+
+  data.forEach(account => {
+    rows += `
+      <tr data-id="${account.account_id}">
+        <td>${account.account_firstname}</td>
+        <td>${account.account_lastname}</td>
+        <td>${account.account_email}</td>
+        <td>${account.account_type}</td>
+        <td>
+          <button class="edit-btn" data-id="${account.account_id}">Edit</button>
+        </td>
+        <td>
+          <button class="delete-btn" data-id="${account.account_id}">Delete</button>
+        </td>
+      </tr>
+    `;
+  });
+
+  return `
+    <table id="accounts-table">
+      <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Role</td>
+          <td>🔄</td>
+          <td>✖</td>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+  `;
+}
+
 
 /* ****************************************
  *  Check Login
@@ -116,4 +160,5 @@ module.exports = {
   handleErrors,
   buildClassificationOptionList,
   checkIfLoggedIn,
+  buildManageAllUserAccountsTable,
 }

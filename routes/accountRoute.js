@@ -17,8 +17,17 @@ const checkUserType = require("../middleware/check-user-type");
 router.get("/authorizedEditAccount/:account_id", checkJWTToken.checkJWTToken, utilities.handleErrors(accountController.buildEditAccountPage));
 router.post("/authorizedEditAccountPassword/:account_id", checkJWTToken.checkJWTToken, regValidate.accountPasswordRules(), utilities.handleErrors(accountController.editAccountPassword));
 router.post("/authorizedEditAccountInfo/:account_id", checkJWTToken.checkJWTToken, regValidate.accountInfoRules(), utilities.handleErrors(accountController.editAccountInfo));
+
 //This is in fulfilment of Week 6 assignment: I have added functionality for admins to manage other users
-router.get("/authorizedManageAllUsers/:account_id", checkJWTToken.checkJWTToken, checkUserType.checkUserIsAnAdmin, utilities.handleErrors(accountController.buildManageAllAccountsPage));
+//The job of this API is simply to get data and supply it in JSON format
+router.get("/api/getAllUserAccounts",  utilities.handleErrors(accountController.getAllUserAccountsAPI));
+//While the sole purpose of this is to actually open the page which would use the API.
+router.get('/manage-all-accounts', checkJWTToken.checkJWTToken, utilities.handleErrors(accountController.buildManageAllUsersPage))
+
+//checkJWTToken.checkJWTToken, checkUserType.checkUserIsAnAdmin,
+
+
+
 
 /***************************************
  *  Public or General Account Routes **

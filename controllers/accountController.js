@@ -105,29 +105,43 @@ async function accountLogin(req, res) {
       throw new Error("Access Forbidden!");
     }
 }  
-
 async function buildAccountManager(req, res) {
   let nav = await utilities.getNav();
+
+  const accountData = res.locals.shareableAccountData; 
+
   res.render("accounts/index", {
     title: "Account Management",
     nav,
-    shareableAccountData : res.locals.shareableAccountData,
+    shareableAccountData: accountData,
     error: null,
-  })
+  });
 }
 
-async function buildManageAllAccountsPage(req, res) {
   
-  let nav = await utilities.getNav();
-  res.render("accounts/index", {
+/* ***************************
+ *  Get All User API
+ * ************************** */
+const getAllUserAccountsAPI = async (req, res) => {
+
+    const accounts = await accountModel.getAllUsersAccountInfo(); // use your function here
+    
+    if (accounts) {
+      res.status(200).json(accounts);
+     
+    } else {
+      res.status(404).json({ message: "No inventory found for this classification."});
+    }  
+}
+
+async function buildManageAllUsersPage (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./accounts/manage-all-accounts",{
     title: "Manage All Users",
     nav,
-    allAccountsData : res.locals.allAccountsData,
-    error: null,
+    errors: null,
   })
 }
-
-
 async function buildEditAccountPage(req, res, next) {
   const account_id = parseInt(req.params.account_id)
   console.log("------ account_id -----: ", account_id);
@@ -215,4 +229,5 @@ async function editAccountPassword(req, res) {
       
 
 module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManager, 
-  buildEditAccountPage, editAccountInfo, editAccountPassword, buildManageAllAccountsPage}
+  buildEditAccountPage, editAccountInfo, editAccountPassword, 
+  buildManageAllUsersPage, getAllUserAccountsAPI}

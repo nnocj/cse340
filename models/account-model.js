@@ -72,5 +72,21 @@ async function editAccountPassword(account_id, account_password) {
     }
 }
 
+/********************************************************
+ * These Admin User Accounts Management functionalitis
+ ********************************************************/
 
-module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountDetailsByAccountId, editAccountInfo, editAccountPassword};
+async function getAllUsersAccountInfo() {
+    try {
+      const allUsersAccountInfo = await pool.query(
+        "SELECT account_id, account_firstname, account_lastname, account_email, account_type FROM public.account"
+      );
+      return allUsersAccountInfo.rows;
+    } catch (error) {
+      console.error("Error fetching accounts:", error);
+      throw new Error("Failed to retrieve account info");
+    }
+  }
+  
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountDetailsByAccountId, 
+    getAllUsersAccountInfo, editAccountInfo, editAccountPassword};
