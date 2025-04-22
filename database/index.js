@@ -32,7 +32,7 @@ if (process.env.NODE_ENV == "development"){
     }
 }
 
-else {
+/*else {
     pool = new Pool({
         connectionString: process.env.DATABASE_URL,
         ssl: {
@@ -40,12 +40,12 @@ else {
         },
     });
     module.exports = pool;
-}
+}*/
 
 // I changes this else statement because I had run time issues.
-/*else {
+else {
         pool = new Pool ({
             connectionString: process.env.DATABASE_URL,
         })
         module.exports = pool
-}*/
+}
