@@ -6,7 +6,7 @@ CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
-    OWNER TO database3405;
+    OWNER TO database3406;
 
 
 CREATE TABLE public.classification (
