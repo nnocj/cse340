@@ -125,16 +125,9 @@ app.use(async (err, req, res, next) => {
 /***************************************
  *            START SERVER
  ***************************************/
-/*const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const host = process.env.HOST || "localhost";
 
 app.listen(port, () => {
   console.log(`🚀 Server is running at http://${host}:${port}`);
-});*/
-
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => {
-  console.log(`🚀 Server is running on port ${port}`);
 });
