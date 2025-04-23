@@ -17,14 +17,27 @@
 
 
     <div id="accounts-management">
-      <h1>Manage All Users Accounts</h1>
 
-      
       
       <div id="user-table-container"></div>
       
 
 
+      <div id="edit-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span id="close-modal" class="close">&times;</span>
+          <h2>Edit User Account</h2>
+          <form id="edit-form">
+            <input type="hidden" id="edit-id" />
+            <label>First Name: <input type="text" id="edit-firstname" /></label><br/>
+            <label>Last Name: <input type="text" id="edit-lastname" /></label><br/>
+            <label>Email: <input type="email" id="edit-email" /></label><br/>
+            <label>Role: <input type="text" id="edit-role" /></label><br/>
+            <button type="submit">Save Changes</button>
+          </form>
+        </div>
+      </div>
+      
        <noscript>JavaScript must be enabled to use this page</noscript>
   
        <script src="../../js/manage-all-user-account.js"></script> 

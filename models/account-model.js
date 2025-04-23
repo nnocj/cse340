@@ -59,6 +59,28 @@ async function editAccountInfo(account_id, account_firstname, account_lastname, 
     }
 }
 
+
+async function editUserAccountInfoByAdmin(account_id, account_firstname, account_lastname, account_email, account_type) {
+    try {
+        const sql = "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3, account_type = $4 WHERE account_id =$5 RETURNING *"; // fourth time reaching backend from the frontend view.
+        return await pool.query(sql, [account_firstname, account_lastname, account_email, account_type, account_id]);
+    }
+    catch (error) {
+        return error.message;
+    }
+}
+
+async function deleteUserAccountByAdmin(account_id) {
+    try {
+        const sql = "DELETE FROM public.account WHERE account_id =$1 RETURNING *"; // 6th time reaching backend from the frontend view.
+        return await pool.query(sql, [ account_id]);
+    }
+    catch (error) {
+        return error.message;
+    }
+}
+
+
 /* *****************************
 *   Edit Account Password
 * *************************** */
@@ -90,4 +112,4 @@ async function getAllUsersAccountInfo() {
   }
   
 module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, getAccountDetailsByAccountId, 
-    getAllUsersAccountInfo, editAccountInfo, editAccountPassword};
+    getAllUsersAccountInfo, editAccountInfo, editAccountPassword, editUserAccountInfoByAdmin, deleteUserAccountByAdmin};

@@ -254,6 +254,28 @@ figcaption {
   padding: 10px;
   justify-content: flex-end;
 }
+/*Styling Modal*/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 5px;
+}
+.close {
+  cursor: pointer;
+  float: right;
+  font-size: 1.5rem;
+}
 
 @media (min-width: 768px) {
 

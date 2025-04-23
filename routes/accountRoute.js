@@ -20,7 +20,9 @@ router.post("/authorizedEditAccountInfo/:account_id", checkJWTToken.checkJWTToke
 
 //This is in fulfilment of Week 6 assignment: I have added functionality for admins to manage other users
 //The job of this API is simply to get data and supply it in JSON format
-router.get("/api/getAllUserAccounts",  utilities.handleErrors(accountController.getAllUserAccountsAPI));
+router.get("/api/getAllUserAccountsToAdmin",  utilities.handleErrors(accountController.getAllUserAccountsAPI));
+router.post("/api/editUserAccountByAdmin/:account_id",  utilities.handleErrors(accountController.editUserAccountAPI));
+router.delete("/api/deleteUserAccountByAdmin/:account_id",  utilities.handleErrors(accountController.deleteUserAccountAPI));
 //While the sole purpose of this is to actually open the page which would use the API.
 router.get('/manage-all-accounts', checkJWTToken.checkJWTToken, utilities.handleErrors(accountController.buildManageAllUsersPage))
 

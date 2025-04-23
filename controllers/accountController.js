@@ -134,10 +134,44 @@ const getAllUserAccountsAPI = async (req, res) => {
     }  
 }
 
+  
+/* ***************************
+ *  Get All User API
+ * ************************** */
+async function editUserAccountAPI(req, res) {
+
+  const {account_email, account_firstname, account_lastname, account_type} = req.body
+  const {account_id} = req.params;
+
+  const accounts = await accountModel.editUserAccountInfoByAdmin(account_id, account_firstname, account_lastname, account_email, account_type); // use your function here
+  
+  if (accounts) {
+    res.status(200).json(accounts);
+   
+  } else {
+    res.status(404).json({ message: "No inventory found for this classification."});
+  }  
+}
+
+async function deleteUserAccountAPI(req, res) {
+  const {account_id} = req.params;
+
+  const accounts = await accountModel.deleteUserAccountByAdmin(account_id); // use your function here
+  
+  if (accounts) {
+    res.status(200).json(accounts);
+   
+  } else {
+    res.status(404).json({ message: "No inventory found for this classification."});
+  }  
+}
+
+
+
 async function buildManageAllUsersPage (req, res, next) {
   let nav = await utilities.getNav()
   res.render("./accounts/manage-all-accounts",{
-    title: "Manage All Users",
+    title: "Manage All Users Accounts",
     nav,
     errors: null,
   })
@@ -229,5 +263,5 @@ async function editAccountPassword(req, res) {
       
 
 module.exports = {buildLogin, buildRegister, registerAccount, accountLogin, buildAccountManager, 
-  buildEditAccountPage, editAccountInfo, editAccountPassword, 
-  buildManageAllUsersPage, getAllUserAccountsAPI}
+  buildEditAccountPage, editAccountInfo, editAccountPassword, deleteUserAccountAPI,
+  buildManageAllUsersPage, getAllUserAccountsAPI, editUserAccountAPI}
